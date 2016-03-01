@@ -15,25 +15,6 @@
 			<div id="page-wrapper">
 
 				<!-- Header -->
-					<header id="header">
-						<h1><a href="index.html">Spectral</a></h1>
-						<nav id="nav">
-							<ul>
-								<li class="special">
-									<a href="#menu" class="menuToggle"><span>Menu</span></a>
-									<div id="menu">
-										<ul>
-											<li><a href="index.html">Home</a></li>
-											<li><a href="generic.html">Generic</a></li>
-											<li><a href="elements.html">Elements</a></li>
-											<li><a href="#">Sign Up</a></li>
-											<li><a href="#">Log In</a></li>
-										</ul>
-									</div>
-								</li>
-							</ul>
-						</nav>
-					</header>
 
 				<!-- Main -->
 					<article id="main">
@@ -49,8 +30,12 @@
 								<!-- <img src=<%= @article.imgurl %> alt="" /><br> -->
 								 <p><%= simple_format(@article.text) %></p><br>
 								<hr />
-								<%= link_to 'Modifie l\'article',edit_article_path %>
+								<% if user_signed_in? && current_user %>
+								<%= link_to 'Modifie larticle',edit_article_path %>
 								<%= button_to 'Supprimer ce article', article_path(@article),method: :delete,data: { confirm: 'Aure?'}%>
+								<% else %>
+								<%= link_to 'login sahbi' ,new_user_session_path %>
+								<% end %>
 							</div>
 						</section>
 
@@ -81,8 +66,12 @@
 
 
 								<hr />
-								<%= link_to 'Modifie l\'article',edit_article_path %>
-								<%= button_to 'Supprimer ce article', article_path(@article),method: :delete,data: { confirm: 'Aure?'}%>
+								<% if user_signed_in? %>
+								<%= link_to 'Modifie le commentaire',edit_article_path %>
+								<%= button_to 'Supprimer ce commentaire', article_path(@article),method: :delete,data: { confirm: 'Aure?'}%>
+								<% else %>
+								<%= link_to 'login sahbi' ,new_user_session_path %>
+								<% end %>
 							</div>
 						</section>
 
@@ -105,13 +94,7 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="../assets/jquery.min.js"></script>
-			<script src="../assets/jquery.scrollex.min.js"></script>
-			<script src="../assets/jquery.scrolly.min.js"></script>
-			<script src="../assets/skel.min.js"></script>
-			<script src="../assets/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="../assets/main.js"></script>
+
 
 	</body>
 </html>

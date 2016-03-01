@@ -20,25 +20,7 @@
 			<div id="page-wrapper">
 
 				<!-- Header -->
-					<header id="header" class="alt">
-						<h1><a href="index.html">Spectral</a></h1>
-						<nav id="nav">
-							<ul>
-								<li class="special">
-									<a href="#menu" class="menuToggle"><span>Menu</span></a>
-									<div id="menu">
-										<ul>
-											<li><a href="index.html">Home</a></li>
-											<li><a href="generic.html">Generic</a></li>
-											<li><a href="elements.html">Elements</a></li>
-											<li><a href="#">Sign Up</a></li>
-											<li><a href="#">Log In</a></li>
-										</ul>
-									</div>
-								</li>
-							</ul>
-						</nav>
-					</header>
+
 
 				<!-- Banner -->
 					<section id="banner">
@@ -71,16 +53,6 @@
 						</div>
 					</section>
 
-				<!-- Two 
-					<section id="two" class="wrapper alt style2">
-						<section class="spotlight">
-							<div class="image"><img src="assets/pic01.jpg" alt="" /></div><div class="content">
-								<h2><%= @article.find(2).title %><br />
-								<%= @article.find(2).author %></h2>
-								<p><%= @article.find(2).text %></p>
-							</div>
-						</section>
-						-->
 					<section id="two" class="wrapper alt style2">
 						<% @article.each do |f| %>
 						<section class="spotlight">
@@ -182,13 +154,7 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="../assets/jquery.min.js"></script>
-			<script src="../assets/jquery.scrollex.min.js"></script>
-			<script src="../assets/jquery.scrolly.min.js"></script>
-			<script src="../assets/skel.min.js"></script>
-			<script src="../assets/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="../assets/main.js"></script>
+
 
 	</body>
 </html>
