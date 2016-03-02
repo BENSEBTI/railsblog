@@ -30,10 +30,11 @@
 								<!-- <img src=<%= @article.imgurl %> alt="" /><br> -->
 								 <p><%= simple_format(@article.text) %></p><br>
 								<hr />
-								<% if user_signed_in? && current_user %>
+								<% if user_signed_in? && current_user.id == @article.user_id %>
 								<%= link_to 'Modifie larticle',edit_article_path %>
 								<%= button_to 'Supprimer ce article', article_path(@article),method: :delete,data: { confirm: 'Aure?'}%>
-								<% else %>
+								<% else %><br>
+								sorry <%= current_user.email %> you are not allowed to fuck with this article<br>
 								<%= link_to 'login sahbi' ,new_user_session_path %>
 								<% end %>
 							</div>

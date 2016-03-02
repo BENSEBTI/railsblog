@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+  
+ before_action :authenticate_user! ,only: [:new, :edit]
+  
   def index
     @article = Article.all
   end
@@ -8,23 +11,24 @@ class ArticlesController < ApplicationController
   end
 
   def create
-  	@article =Article.new(params.require(:article).permit(:title, :author, :imgurl, :text))
+  	@article = current_user.articles.new(params.require(:article).permit(:title, :author, :imgurl, :text,:user_id))
   	if @article.save
-
-  	redirect_to @article
-
-  else
-    render 'new'
-
-  end
+      redirect_to @article
+      else
+      render 'new'
+    end
   end
 
   def show
     @article = Article.find(params[:id])
+
   end
 
   def edit
     @article = Article.find(params[:id])
+    unless current_user.id == @article.user_id
+    redirect_to @article
+    end
   end
 
   def update

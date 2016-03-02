@@ -27,8 +27,13 @@
 						<div class="inner">
 							<h2>Spectral</h2>
 							<p>Nombre d'article<br />
-							<%= @article.count %><br />
-							cree par <a href="http://jeunemploi.com">BENSEBTI</a>.</p>
+							<% if user_signed_in? %>
+							<%= current_user.articles.count %><br />
+							cree par <a href="http://jeunemploi.com"><%= current_user.email %></a>.</p>
+							<% else %>
+							<%= @article.count %>
+							cree par <a href="http://jeunemploi.com">ALL THE USERS</a>.</p>
+							<% end %>
 							<ul class="actions">
 								<li><a href="#" class="button special">Activate</a></li>
 							</ul>
