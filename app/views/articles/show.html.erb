@@ -34,7 +34,11 @@
 								<%= link_to 'Modifie larticle',edit_article_path %>
 								<%= button_to 'Supprimer ce article', article_path(@article),method: :delete,data: { confirm: 'Aure?'}%>
 								<% else %><br>
+										<% if user_signed_in? %>
 								sorry <%= current_user.email %> you are not allowed to fuck with this article<br>
+										<% else %>
+								sorry guest user you are not allowed to fuck with this article<br>
+										<% end %>
 								<%= link_to 'login sahbi' ,new_user_session_path %>
 								<% end %>
 							</div>
@@ -43,36 +47,18 @@
 						<section class="wrapper style5">
 							<div class="inner">
 
-								<h5><% @article.comments.each do |cmt| %><br></h5>
-								 <h3><%= cmt.user %></h3>
-								 <h5><%= cmt.email %></h5>
-								 <%= simple_format(cmt.commentaire) %>
-								 <% end %>
+								<%= render @article.comments %>
 								<hr />
 							</div>
 						</section>
 
 						<section class="wrapper style5">
 							<div class="inner">
-
-								<h3><%= form_for([@article, @article.comments.build]) do |f| %><br></h3>
-								 <h4>name: <%= f.text_field :user %></h4><br>
-								<!-- <img src=<%= @article.imgurl %> alt="" /><br> -->
-								 <h4>email: <%= f.text_field :email %></h4><br>
-								 <h4>commentaire: <%= f.cktext_area :commentaire %></h4><br>
-									<%= f.submit 'commenter' %>
-								<% end %>
-
-
-
+								<h3>un commentaire<br></h3>
+								<%= render 'comments/form' %>
 
 								<hr />
-								<% if user_signed_in? %>
-								<%= link_to 'Modifie le commentaire',edit_article_path %>
-								<%= button_to 'Supprimer ce commentaire', article_path(@article),method: :delete,data: { confirm: 'Aure?'}%>
-								<% else %>
-								<%= link_to 'login sahbi' ,new_user_session_path %>
-								<% end %>
+						
 							</div>
 						</section>
 
@@ -88,7 +74,7 @@
 							<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
 						</ul>
 						<ul class="copyright">
-							<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							<li>&copyright </li><li>Design: <a href="http://www.google.fr">BENSEBTI</a></li>
 						</ul>
 					</footer>
 

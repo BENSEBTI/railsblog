@@ -1,0 +1,21 @@
+<p>
+  <strong>Commenter:</strong>
+  <%= comment.user %>
+</p>
+ <p>
+  <strong>Commenter:</strong>
+  <%= comment.email %>
+</p>
+<p>
+  <strong>Comment:</strong>
+  <%= simple_format(comment.commentaire) %>
+</p>
+<p>
+    <% if user_signed_in? && comment.user_id == current_user.id %>
+ <%= button_to 'Destroy Comment', [comment.article, comment],method: :delete,data: { confirm: 'Are you sure?' } %>
+     <% else %>
+    <%= "you need to be loged in or the commenter him self or the admin to delete this article" %>
+    <% end %>
+
+
+ 

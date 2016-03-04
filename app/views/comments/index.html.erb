@@ -1,0 +1,6 @@
+<% @comment.each do |f| %>
+<%= f.user %><br>
+<%= simple_format(f.commentaire) %>
+<hr>
+<%= button_to 'Destroy Comment', article_comments_path(@article.comment),method: :delete,data: { confirm: 'Are you sure?' } %>
+<% end %>
