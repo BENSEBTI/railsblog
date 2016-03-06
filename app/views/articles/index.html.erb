@@ -29,10 +29,6 @@
 							<p>Nombre d'article<br />
 							<% if user_signed_in? %>
 							<%= current_user.articles.count %><br/>
-							<% current_user.comments.each do |f| %><br>
-							<%= f.user %>
-							<%= link_to "voir",article_comment(@comment) %>
-							<% end %>
 							cree par <a href="http://jeunemploi.com"><%= current_user.email %></a>.</p>
 							<% else %>
 							<%= @article.count %>

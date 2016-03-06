@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'ckeditor'
+gem 'active_skin'
 gem 'paperclip' # Don't forget to sudo apt-get install imagemagick 
+gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
